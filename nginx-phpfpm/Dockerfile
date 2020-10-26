@@ -15,7 +15,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
 
 # Install nginx, php-fpm and supervisord from ubuntu repository
-RUN apt install -y nginx php-fpm supervisor && \
+RUN apt install -y nginx php-fpm supervisor mysql-client && \
     rm -rf /var/lib/apt/lists/* && \
     apt clean
     
@@ -38,11 +38,12 @@ RUN mkdir -p /run/php && \
     chown -R www-data:www-data /run/php
     
 # Volume configuration
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
+#VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
 
 # Copy start.sh script and define default command for the container
 COPY start.sh /start.sh
+RUN chmod +x start.sh
 CMD ["./start.sh"]
 
-# Expose Port for the Application 
-EXPOSE 80 443
+# Expose Port for the Application  #if you are using this in docker-compose then no need to define here.
+EXPOSE 81 443 

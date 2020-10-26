@@ -2305,3 +2305,19 @@
 2020/10/26 14:52:48 [emerg] 1972#1972: unknown directive "index.php" in /etc/nginx/sites-enabled/default:5
 2020/10/26 14:52:50 [emerg] 1973#1973: unknown directive "index.php" in /etc/nginx/sites-enabled/default:5
 2020/10/26 14:52:52 [emerg] 1974#1974: unknown directive "index.php" in /etc/nginx/sites-enabled/default:5
+2020/10/26 15:52:50 [error] 10#10: *1 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /var/www/html/index.php:19
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/index.php on line 19" while reading response header from upstream, client: 45.79.122.100, server: _, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "45.79.122.100"
+2020/10/26 15:54:09 [error] 10#10: *5 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /var/www/html/index.php:19
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/index.php on line 19" while reading response header from upstream, client: 61.16.129.235, server: _, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "45.79.122.100"
+2020/10/26 15:56:06 [error] 10#10: *8 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /var/www/html/index.php:19
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/index.php on line 19" while reading response header from upstream, client: 61.16.129.235, server: _, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "45.79.122.100"
+2020/10/26 15:57:41 [error] 10#10: *11 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /var/www/html/index.php:19
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/index.php on line 19" while reading response header from upstream, client: 61.16.129.235, server: _, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "45.79.122.100"

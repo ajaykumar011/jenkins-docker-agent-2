@@ -3,7 +3,7 @@
     <h2>LEMP Stack Test</h2>
 </head>
     <body>
-    <?php echo '<p>Hello,</p>';
+    <?php echo '<p>Your Installation is Successful </p>';
 
     // Define PHP variables for the MySQL connection.
     $servername = "db";
@@ -20,9 +20,9 @@
 
     // Report if the connection fails or is successful.
     if (!$conn) {
-        exit('<p>Your connection has failed.<p>' .  mysqli_connect_error());
+        exit('<p>Your DB connection has failed.<p>' .  mysqli_connect_error());
     }
-    echo '<p>You have connected successfully.</p>';
+    echo '<h3>You have connected to Database successfully.</h3>';
     ?>
 </body>
 </html>

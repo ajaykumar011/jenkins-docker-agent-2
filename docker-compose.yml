@@ -22,9 +22,9 @@ services:
         context: nginx-phpfpm
     container_name: webserver
     restart: unless-stopped
-    # ports:
-    #   - "80:81"
-    #   - "443:443"
+    ports:
+      - "80:80"
+      - "443:443"
     volumes:
       - ./app:/var/www/html
     #  - ./nginx-conf:/etc/nginx/conf.d

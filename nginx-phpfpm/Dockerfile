@@ -15,7 +15,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
 
 # Install nginx, php-fpm and supervisord from ubuntu repository
-RUN apt install -y nginx php-fpm supervisor mysql-client && \
+RUN apt install -y nginx php-fpm supervisor mysql-client php-mysql && \
     rm -rf /var/lib/apt/lists/* && \
     apt clean
     
@@ -46,4 +46,4 @@ RUN chmod +x start.sh
 CMD ["./start.sh"]
 
 # Expose Port for the Application  #if you are using this in docker-compose then no need to define here.
-EXPOSE 81 443 
+EXPOSE 80 443 

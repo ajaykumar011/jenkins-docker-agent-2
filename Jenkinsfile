@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     //image = docker.build("${IMAGE}")
-                    println "Newly generated image, " + image.id
+                    println "Newly generated image"
                 }
             }
         }

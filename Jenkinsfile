@@ -21,37 +21,28 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    image = docker.build("${IMAGE}")
+                    //image = docker.build("${IMAGE}")
                     println "Newly generated image, " + image.id
                 }
             }
         }
-        stage('test') {
+        stage('Docker-Composer-Run') {
             steps {
                 script {
                     // https://hub.docker.com/repository/docker/ajaykumar011/docker-as-agent-in-jenkins
-                    def container = image.run('-p 80')
-                    def contport = container.port(80)
-                    println image.id + " container is running at host port, " + contport
+                   // def container = image.run('-p 80')
+                   // def contport = container.port(80)
+                   // println image.id + " container is running at host port, " + contport
                     def resp = sh(returnStdout: true,
                                         script: """
-                                                set +x
-                                                curl -w "%{http_code}" -o /dev/null -s \
-                                                http://\"${contport}\"
+                                                echo "Docker Build and UP" && \
+                                                docker-compose up --build --force-recreate -d 
                                                 """
                                         ).trim()
                     if ( resp == "200" ) {
                         println "tutum hello world is alive and kicking!"
-                        docker.withRegistry("${env.REGISTRY}", 'docker-hub') {
-                            image.push("${GIT_HASH}")
-                            if ( "${env.BRANCH_NAME}" == "master" ) {
-                                image.push("LATEST")
-                            }
-                        }
-                        currentBuild.result = "SUCCESS"
                     } else {
                         println "Humans are mortals."
-                        currentBuild.result = "FAILURE"
                     }
                 }
             }
